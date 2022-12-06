@@ -1,0 +1,217 @@
+local scriptran = 0
+
+game:GetObjects("rbxassetid://11750137203")[1].Parent = game.Workspace
+
+local function inviscript()
+local getcurrentran = scriptran
+getcurrentran = getcurrentran+1
+local numran = getcurrentran
+scriptran = numran
+
+local fixbugs = true
+local R6PLR = false
+local R15PLR = false
+
+game:WaitForChild("Run Service").RenderStepped:Connect(function()
+    if numran == scriptran then
+    if fixbugs == true then
+if Character:FindFirstChild("Humanoid").Health == 0 then
+    fixbugs = false
+    
+end
+end
+end
+end)
+
+for _,v in pairs(game.Players:GetChildren()) do
+   if v.Character:FindFirstChild("Humanoid").RigType == Enum.HumanoidRigType.R6 == true then
+    R6PLR = true
+    break
+   end
+end
+for _,v in pairs(game.Players:GetChildren()) do
+if v.Character:FindFirstChild("Humanoid").RigType == Enum.HumanoidRigType.R15 == true then
+R15PLR = true
+break
+end
+end
+
+local userInputService = game:GetService("UserInputService")
+local maainpart = game.Workspace["BasePlate But its Small"]
+local allowinvis = true
+
+local Player = game.Players.LocalPlayer
+local Character	= Player.Character
+local RootPart = Character:WaitForChild("HumanoidRootPart")
+local FakeRootPart = nil
+local Motor6D = nil
+local InvisCounts = 0
+local savedcframe = nil
+
+local firstswitch = true
+local secondswitch = false
+
+local function unInvis()
+    if numran == scriptran then
+    if fixbugs == true then
+    FakeRootPart:Destroy()
+    Motor6D:Destroy()
+    allowinvis = true
+    end
+end
+end
+
+local function unInviseffect()
+    if numran == scriptran then
+    if fixbugs == true then
+    if R6PLR == true then
+    Character["Head"].Transparency = 0
+	Character["Torso"].Transparency = 0
+	Character["Left Arm"].Transparency = 0
+	Character["Right Arm"].Transparency = 0
+	Character["Left Leg"].Transparency = 0
+	Character["Right Leg"].Transparency = 0
+	for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Accessory") then
+        v.Handle.Transparency = 0
+    end
+end
+end
+end
+if R15PLR == true then
+    Character["Head"].Transparency = 0
+	Character["UpperTorso"].Transparency = 0
+	Character["LowerTorso"].Transparency = 0
+	Character["LeftUpperArm"].Transparency = 0
+	Character["LeftLowerArm"].Transparency = 0
+	Character["LeftHand"].Transparency = 0
+	Character["RightUpperArm"].Transparency = 0
+	Character["RightLowerArm"].Transparency = 0
+	Character["RightHand"].Transparency = 0
+
+	Character["LeftUpperLeg"].Transparency = 0
+	Character["LeftLowerLeg"].Transparency = 0
+	Character["LeftFoot"].Transparency = 0
+	Character["RightUpperLeg"].Transparency = 0
+	Character["RightLowerLeg"].Transparency = 0
+	Character["RightFoot"].Transparency = 0
+	for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Accessory") then
+        v.Handle.Transparency = 0
+    end
+end
+end
+end
+end
+
+local function inviseffect()
+    if numran == scriptran then
+    if fixbugs == true then
+    if R6PLR == true then
+    Character["Head"].Transparency = 0.5
+	Character["Torso"].Transparency = 0.5
+	Character["Left Arm"].Transparency = 0.5
+	Character["Right Arm"].Transparency = 0.5
+	Character["Left Leg"].Transparency = 0.5
+	Character["Right Leg"].Transparency = 0.5
+	for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Accessory") then
+        v.Handle.Transparency = 0.5
+    end
+end
+end
+if R15PLR == true then
+    Character["Head"].Transparency = 0.5
+	Character["UpperTorso"].Transparency = 0.5
+	Character["LowerTorso"].Transparency = 0.5
+	Character["LeftUpperArm"].Transparency = 0.5
+	Character["LeftLowerArm"].Transparency = 0.5
+	Character["LeftHand"].Transparency = 0.5
+	Character["RightUpperArm"].Transparency = 0.5
+	Character["RightLowerArm"].Transparency = 0.5
+	Character["RightHand"].Transparency = 0.5
+
+	Character["LeftUpperLeg"].Transparency = 0.5
+	Character["LeftLowerLeg"].Transparency = 0.5
+	Character["LeftFoot"].Transparency = 0.5
+	Character["RightUpperLeg"].Transparency = 0.5
+	Character["RightLowerLeg"].Transparency = 0.5
+	Character["RightFoot"].Transparency = 0.5
+	for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v:IsA("Accessory") then
+        v.Handle.Transparency = 0.5
+    end
+end
+end
+end
+end
+end
+
+local function invis()
+    if numran == scriptran then
+    if fixbugs == true then
+    RootPart.CFrame = maainpart.CFrame
+    RootPart.Anchored = false
+    wait(0.1)
+FakeRootPart = Instance.new("Part",RootPart)
+FakeRootPart.Name =	"HumanoidRootPart"
+FakeRootPart.Transparency =	1
+FakeRootPart.CanCollide	= false
+FakeRootPart.Size =	RootPart.Size
+
+Motor6D =	Instance.new("Motor6D",RootPart)
+Motor6D.Name = "SlowTurnJoint"
+Motor6D.Part0 =	RootPart
+Motor6D.Part1 = FakeRootPart
+RootPart.Anchored = true
+wait()
+RootPart.CFrame = savedcframe.CFrame
+RootPart.Anchored = false
+allowinvis = true
+end
+end
+end
+
+userInputService.InputBegan:Connect(function(input, gameProcessedEvent)
+    if numran == scriptran then
+    if fixbugs == true then
+    if gameProcessedEvent then return end
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.Z then
+            if allowinvis == true then
+            InvisCounts = InvisCounts+1
+            allowinvis = false
+            end
+            if InvisCounts == 1 then
+                if firstswitch == true then
+                    firstswitch = false
+                    secondswitch = true
+                RootPart.Anchored = true
+                savedcframe = Instance.new("Part", Character)
+                savedcframe.CFrame = RootPart.CFrame
+                savedcframe.Anchored = true
+                savedcframe.Transparency = 1
+                savedcframe.CanCollide = false
+                wait()
+                invis()
+                inviseffect()
+                end
+            end
+            if InvisCounts == 2 then
+                if secondswitch == true then
+                savedcframe:Destroy()
+                unInvis()
+                unInviseffect()
+                InvisCounts = 0
+                firstswitch = true
+                secondswitch = false
+                end
+            end
+        end
+    end
+    end
+    end
+end)
+end
+
+inviscript()
