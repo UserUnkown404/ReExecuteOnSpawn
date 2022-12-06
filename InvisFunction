@@ -1,7 +1,5 @@
 local scriptran = 0
 
-game:GetObjects("rbxassetid://11750137203")[1].Parent = game.Workspace
-
 local function inviscript()
 local getcurrentran = scriptran
 getcurrentran = getcurrentran+1
